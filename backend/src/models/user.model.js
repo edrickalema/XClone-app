@@ -38,9 +38,8 @@ const userSchema = new mongoose.Schema(
     bio: {
       type: String,
       default: "",
-      maxLength: 160,
+      maxlength: 160,
     },
-
     location: {
       type: String,
       default: "",
@@ -55,4 +54,4 @@ const userSchema = new mongoose.Schema(
 
 const User = mongoose.model("User", userSchema);
 
-export default User
+export default User;

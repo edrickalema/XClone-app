@@ -14,15 +14,18 @@ const commentSchema = new mongoose.Schema({
   content: {
     type: String,
     required: true,
-    maxLength: 280,
+    maxlength: 280,
   },
-
-  likes: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+  likes: {
+    type: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
+    default: [],
+    validate: {
+      validator: function (arr) {
+        return arr.length === new Set(arr.map((id) => id.toString())).size;
+      },
+      message: "Duplicate likes are not allowed",
     },
-  ],
+  },
 });
 
 const Comment = mongoose.model("Comment", commentSchema);
