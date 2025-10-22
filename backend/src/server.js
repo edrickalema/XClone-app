@@ -33,10 +33,24 @@ app.use((err, req, res, next) => {
 // App start point
 const PORT = ENV.PORT || 5001;
 
-app.listen(
-  (PORT,
-  () => {
-    connectToDB();
-    console.log(`App is running on the port ${PORT}`);
-  })
-);
+const startServer = async () => {
+  try {
+    await connectToDB();
+
+    if (ENV.NODE_ENV !== "production") {
+      app.listen(
+        (PORT,
+        () => {
+          console.log(`App is running on the port ${PORT}`);
+        })
+      );
+    }
+  } catch (error) {
+    console.log(error);
+    process.exit(1);
+  }
+};
+
+export default app;
+
+startServer();
