@@ -56,7 +56,6 @@ export const syncUserToDB = asyncHandler(async (req, res) => {
   const clerkUser = await clerkClient.users.getUser(userId);
   const newUserData = {
     clerkId: userId,
-    email: clerkUser.emailAddress[0].emailAddress,
     email: clerkUser.emailAddresses[0].emailAddress,
     firstName: clerkUser.firstName || "",
     lastName: clerkUser.lastName || "",
