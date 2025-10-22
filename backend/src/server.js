@@ -6,7 +6,7 @@ import { connectToDB } from "./config/db.js";
 import { ENV } from "./config/env.js";
 import userRouter from "./routes/user.route.js";
 import postRouter from "./routes/post.route.js";
-
+import commentRouter from './routes/comment.route.js'
 // initializing the express app
 const app = express();
 
@@ -18,6 +18,7 @@ app.use(cors());
 // Routes
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/posts", postRouter);
+app.use("api/v1/comments", commentRouter)
 
 app.use((err, req, res, next) => {
   console.log("unhandled error:", err);
