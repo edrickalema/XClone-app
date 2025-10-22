@@ -19,11 +19,12 @@ app.use(cors());
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/posts", postRouter);
 
-app.use((err, req, res) => {
+app.use((err, req, res, next) => {
   console.log("unhandled error:", err);
   res.status(500).json({
     message: err.message || "Internal server error",
   });
+  next()
 });
 // App start point
 const PORT = ENV.PORT || 5001;
