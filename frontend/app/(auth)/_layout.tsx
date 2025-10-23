@@ -6,7 +6,7 @@ export default function AuthRoutesLayout() {
 
   if (isSignedIn) {
     // @ts-ignore
-    return <Redirect href={"/"} />;
+    return <Redirect href={"/(tabs)"} />;
   }
 
   return (

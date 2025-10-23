@@ -1,3 +1,4 @@
+import SignOutButton from "@/component/SignOutButton";
 import { SignedOut, useClerk } from "@clerk/clerk-expo";
 import {
   Button,
@@ -7,18 +8,17 @@ import {
   Touchable,
   TouchableOpacity,
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function App() {
+export default function HomeScreen() {
   const { signOut } = useClerk();
   return (
-    <View className='flex-1 items-center justify-center bg-white'>
+    <SafeAreaView >
       <Text className='text-4xl font-bold text-blue-500'>
         Welcome to Alema!
       </Text>
 
-      <TouchableOpacity onPress={() => signOut()}>
-        <Text>Out</Text>
-      </TouchableOpacity>
-    </View>
+      <SignOutButton />
+    </SafeAreaView>
   );
 }
