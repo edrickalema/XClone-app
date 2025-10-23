@@ -1,8 +1,8 @@
 import { View, Text } from "react-native";
-export default function TabLayout() {
+export default function ProfileScreen() {
   return (
     <View>
-      <Text>_layout</Text>
+      <Text>profile</Text>
     </View>
   );
 }
